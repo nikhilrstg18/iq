@@ -44,7 +44,7 @@ Good luck with your interview 😊
 
    The CLR stands for `Common Language Runtime` and it is an Runtime Environment in .Net.
 
-   <img align="right" src="https://github.com/nikhilrstg18/nikhilrstg18/iq/blob/main/netcore/assets/img/clr.png" alt="Illustration of Nikhil speaking at a conference/webinar " width=200px height=200px/>
+   <img align="right" src="https://github.com/nikhilrstg18/iq/blob/main/netcore/assets/img/clr.png" alt="Illustration level at which CLR operates" width=400px height=350px/>
 
    Main components of CLR:
 
