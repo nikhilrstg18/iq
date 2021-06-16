@@ -313,7 +313,7 @@ Good luck with your interview 😊
 
       The GC uses the following information to determine whether objects are live:
 
-    <img align="right" src="https://github.com/nikhilrstg18/iq/blob/main/netcore/assets/img/gc-wokring.png" alt="Illustration How GC works" width=450px height=300px/>
+    <img align="right" src="https://github.com/nikhilrstg18/iq/blob/main/netcore/assets/img/gc-working.png" alt="Illustration How GC works" width=450px height=300px/>
 
     - **Stack roots**: Stack variables provided by the just-in-time (JIT) compiler and stack walker.
     - **Garbage collection handles**: Handles that point to managed objects and that can be allocated by user code or by the CLR.
@@ -529,7 +529,7 @@ Good luck with your interview 😊
 
 22. ### What's is BCL? What is FCL?
 
-<img align="right" src="https://github.com/nikhilrstg18/iq/blob/main/netcore/assets/img/bcl.png" alt="Illustration How GC works" width=400px height=450px/>
+<img align="right" src="https://github.com/nikhilrstg18/iq/blob/main/netcore/assets/img/bcl.png" alt="Illustration How GC works" width=400px height=400px/>
 
 > BCL
 
