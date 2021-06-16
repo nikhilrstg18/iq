@@ -41,7 +41,7 @@ Good luck with your interview 😊
 | 18  | [Explain the difference between “managed” and “unmanaged” code ? 🚀](#Explain-the-difference-between-“managed”-and-“unmanaged”-code)                                                                 |
 | 19  | [Why to use of the IDisposable interface ?](#Why-to-use-of-the-IDisposable-interface)                                                                                                                |
 | 20  | [Explain the difference between Task and Thread in .NET ?](#Explain-the-difference-between-Task-and-Thread-in-.NET)                                                                                  |
-| 21  | [What is the difference between Class Library (.NET Standard) and Class Library (.NET Core)? 🚀](<#What-is-the-difference-between-Class-Library-(.NET-Standard)-and-Class-Library-(.NET-Core)?>>)    |
+| 21  | [What is the difference between Class Library (.NET Standard) and Class Library (.NET Core)? 🚀](<#What-is-the-difference-between-Class-Library-(.NET-Standard)-and-Class-Library-(.NET-Core)?>)     |
 | 22  | [What's is BCL? What is FCL? 🚀](#What's-is-BCL?-What-is-FCL?)                                                                                                                                       |
 | 23  | [Does .NET support multiple inheritance?](#Does-.NET-support-multiple-inheritance?)                                                                                                                  |
 | 24  | [What's the difference between RyuJIT and Roslyn? 🚀](#What's-the-difference-between-RyuJIT-and-Roslyn?)                                                                                             |
@@ -285,7 +285,7 @@ Good luck with your interview 😊
 
       There are three generations of objects on the heap:
 
-        <img align="right" src="https://github.com/nikhilrstg18/iq/blob/main/netcore/assets/img/gc-heap-generations.png" alt="Illustration GC heap Generations" width=400px height=350px/>
+        <img align="right" src="https://github.com/nikhilrstg18/iq/blob/main/netcore/assets/img/gc-heap-gen.png" alt="Illustration GC heap Generations" width=400px height=350px/>
 
       **Generation 0**:
 
@@ -529,7 +529,7 @@ Good luck with your interview 😊
 
 22. ### What's is BCL? What is FCL?
 
-<img align="right" src="https://github.com/nikhilrstg18/iq/blob/main/netcore/assets/img/gc-wokring.png" alt="Illustration How GC works" width=450px height=300px/>
+<img align="right" src="https://github.com/nikhilrstg18/iq/blob/main/netcore/assets/img/bcl.png" alt="Illustration How GC works" width=400px height=450px/>
 
 > BCL
 
