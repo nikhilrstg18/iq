@@ -16,15 +16,15 @@ Good luck with your interview 😊
 
 ### Table of Contents
 
-| No. | Questions                                                                                                                                              |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1   | [What is MVC? 🚀](#What-is-MVC?)                                                                                                                       |
-| 2   | [Breifly explain project structure of Asp.Net Core Application (Empty)? 🚀](<#Breifly-explain-project-structure-of-Asp.Net-Core-Application-(Empty)?>) |
-| 3   | [What is Dependency Injection? 🚀](#What-is-Dependency-Injection?)                                                                                     |
-| 4   | [Briefly explain ConfigureServices() in Startup class 🚀](<#Briefly-explain-ConfigureServices()-in-Startup-class>)                                     |
-| 5   | [Briefly explain Configure() in Startup class 🚀](<#Briefly-explain-Configure()-in-Startup-class>)                                                     |
-| 6   | [Briefly explain CreateDefaultBuilder() in Startup class 🚀](<#Briefly-explain-CreateDefaultBuilder()-in-Startup-class>)                               |
-| 7   | [Briefly explain ConfigureWebHostsDefaults() in Startup class 🚀](<#Briefly-explain-ConfigureWebHostsDefaults()-in-Startup-class>)                     |
+| No. | Questions                                                                                                                          |
+| --- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | [What is MVC? 🚀](#What-is-MVC?)                                                                                                   |
+| 2   | [Explain project structure of Asp.Net Core Application (Empty) 🚀](#Explain-project-structure-of-Asp.Net-Core-Application-Empty)   |
+| 3   | [What is Dependency Injection? 🚀](#What-is-Dependency-Injection?)                                                                 |
+| 4   | [Briefly explain ConfigureServices() in Startup class 🚀](<#Briefly-explain-ConfigureServices()-in-Startup-class>)                 |
+| 5   | [Briefly explain Configure() in Startup class 🚀](<#Briefly-explain-Configure()-in-Startup-class>)                                 |
+| 6   | [Briefly explain CreateDefaultBuilder() in Startup class 🚀](<#Briefly-explain-CreateDefaultBuilder()-in-Startup-class>)           |
+| 7   | [Briefly explain ConfigureWebHostsDefaults() in Startup class 🚀](<#Briefly-explain-ConfigureWebHostsDefaults()-in-Startup-class>) |
 
 ---
 
@@ -38,7 +38,7 @@ Good luck with your interview 😊
 
 ---
 
-2. ### Briefly explain project structure of Asp.Net Core Application (Empty)?
+2. ### Explain project structure of Asp.Net Core Application (Empty)
 
    <img src="https://github.com/nikhilrstg18/iq/blob/main/netcore/assets/img/aspnetcore-empty.png" alt="Empty Asp.Net Core app .csproj" width=300px />
 
