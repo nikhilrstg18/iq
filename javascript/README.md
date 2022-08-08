@@ -6,18 +6,30 @@
 
 ---
 
-### Disclaimer
+## Disclaimer
 
 The questions provided in this repository are the summary of frequently asked questions across numerous companies. We cannot guarantee that these questions will actually be asked during your interview process, nor should you focus on memorizing all of them. The primary purpose is for you to get a sense of what some companies might ask — do not get discouraged if you don't know the answer to all of them ⁠— that is ok!
 
 Good luck with your interview 😊
-
 ---
-## **What** ? **Why** ? **When** ? **Who** ? **Where**? **How**? about JS ?
-> What ? 
+# Table of Topics
+| #                  | Topic                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1. Getting Started | [**What**? **Why**? **When**? **Who**? **Where**? **How**? about JS](#what-why-when-who-where-how-about-js)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| Topics Covered     | [1.1 Understanding JS Engine](#understanding-js-engine) <br/>[1.1.1 Inside JS Engine](#inside-js-engine)<br/>[1.2 Understanding Heap](#understanding-heap) <br/>[1.2.1 Memory Leaks](#memory-leaks)<br /> [1.3 Understanding Call stack](#understanding-call-stack) <br/>[1.3.1 Stack Overflow](#stack-overflow) <br />[1.3.2 Garbage Collection](#garbage-collection) <br /> [1.3.3  Single-threaded](#single-threaded) <br/>[1.4 Understanding JS Runtime](#understanding-js-runtime) <br/>[1.4.1 JS Engine](#js-engine) <br/>[1.4.2 Browser Web API (window)](#browser-web-api)<br/>[1.4.3 Event Loop and Callback Queue](#event-loop-and-callback-queue)                                                                                                                                                                                  |
+| 2. Grammer         | [**JS Basics**](#what-why-when-who-where-how-about-js)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| Topics Covered     | 2.1 Operators<br/> 2.2 Expressions <br/>2.3 Type Conversion & Coercion                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| 3. Concepts        | [**JS Fundamentals**](#what-why-when-who-where-how-about-js)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Topics Covered     | 3.1 Declarations<br/> 3.2 Execution Context <br/>3.3 Lexical Environment <br/>3.4 Scope & scope chain-<br/>3.4.1 Understanding Scope-Chain <br/>3.4.2 Understanding Scope [[scope]]<br/>3.4.3 Lexical scope Vs Dynamic scope <br/>3.4.4 Leakage of global variable & 'use strict'<br/>3.4.5 Concept of Currying<br/>3.5 Hoisting-<br/>3.5.1 function declaration Vs function expression <br/>3.5.2 Variable Hoisting (**`var`**) <br/>3.5.3 Function Hoisting (**`function`**) <br/>3.6 Function Invokation<br/>3.7 Understanding **`this`** - **`call()`**- **`apply()`**- **`bind()`**-<br/>3.7.1 **`this`** w.r.t. dynamic & lexical scope <br/>3.7.2 **`call()`** & **`apply()`** <br/>3.7.3 **`bind()`**<br/>3.8 Global variable & IFFE<br/>3.8.1 Global Variable and its usage <br/>3.8.2 IFFE- Immediately Invoked Function Expression |
+
+
+Good luck with your interview 😊
+
+# What Why When Who Where How about JS
+> **What is JS** ? 
 
 JavaScript (JS) is a
-- **dynamic**(aka loosley typed)
+- **dynamic** (aka loosley typed)
 - **interpreted** or **compiled** (JIT compiled)
 - **garbage-collected**
 - **single-threaded**
@@ -28,16 +40,15 @@ JavaScript (JS) is a
   
 While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as Node.js, Apache CouchDB and Adobe Acrobat. supporting object-oriented, imperative, and declarative (e.g. functional programming) styles. 
 
-
 Read more @ [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 ---
-> When JS?
+> When and Who created JS?
 
 In 1995, **Brendon Eich** created JS to add interactivity in legendary Netscape Navigator web browser.
 
 ---
-> Why JS?
+> Why learn JS?
 
 JS was popular, is popular and with its ongoing evolution JS will remain popular.\
 See most popular technology @ [stackoverflow survey 2022](https://survey.stackoverflow.co/2022/#technology-most-popular-technologies)
@@ -54,6 +65,7 @@ To understand how JS works, you need to understand
 - JS Engine 
 - JS Runtime
 
+**[⬆ Back to Topics](#table-of-topics)**
 
 ### **Understanding JS Engine**
 ---
@@ -187,6 +199,8 @@ So far we learnt that JS Engine does a lot of work for us, but more important th
 - Heap 
 - Call Stack
 
+**[⬆ Back to Topics](#table-of-topics)**
+
 #### **Understanding Heap**
 ![Heap](./assets/img/jre-1.png)
 
@@ -200,7 +214,7 @@ const human = {     // allocate memory for object ...and its values
     age:28
 }
 ```
-##### **Understanding Memory Leaks**
+##### **Memory Leaks**
 eg. 
 ```javascript
 var array = [];
@@ -233,6 +247,8 @@ setInterval(()=>{
     // these objects are never garbage collected...
 }, 1000);
 ```
+**[⬆ Back to Topics](#table-of-topics)**
+
 #### **Understanding Call Stack** 
 ![Inside JS Engine](./assets/img/jre-3.png)
 
@@ -265,7 +281,7 @@ calc();
 - When you press F11 step into again, calc method is done executing and popped out from call stack
 - Finally you can press F8 ( resume script execution )
 
-##### **Understanding Stack Overflow** 
+##### **Stack Overflow** 
 ![Inside JS Engine](./assets/img/jre-9.png)
 
 Most common way to create stack overflow is using recursion
@@ -281,7 +297,7 @@ Execute above code in console tab in dev tools in chrome
 
 ![Inside JS Engine](./assets/img/jre-10.png)
 
-##### **Understanding Garbage Collection** 
+##### **Garbage Collection** 
 
 - JS is garbage collected language.
   ![Inside JS Engine](./assets/img/jre-11.png)
@@ -326,7 +342,7 @@ function logHuman(){
   > Once `logHuman()` is done executing, object referenced by human variable is eligible for garbage collection
 other way, we can say scope for human object is over after execution of `logHuman()`
 
-##### **Understanding Single-threaded**
+##### **Single-threaded**
 
 Being single threaded means that only one set of instruction is executed at a time, it is not doing multiple things
 Reason of being single threaded --> is that it has only 1 call stack.
@@ -350,6 +366,7 @@ Most of the time you won't be directly accessing of using JS Engine (which is sy
 We need to introduce the idea of async code.
 It's not only the JS engine executing our code but the JS Runtime (NodeJS implements something similar) which beyond just JS Engine 
 
+**[⬆ Back to Topics](#table-of-topics)**
 
 ### **Understanding JS Runtime**
 
@@ -360,13 +377,13 @@ To overcome single threaded nature of JS, JS Runtime came into picture.
 JS Runtime comprises 3 main components
 
 ---
-1. **JS Engine**
-2. **Web API** (window)
+1. #### **JS Engine**
+2. #### **Browser Web API**
   These are application that can do variety of things like send Http request, listen to DOM events (click, change), setTimeout, localStorage sessionStoage, indexedDB etc) - all are async operations.
   ![Inside JS Engine](./assets/img/jre-18.png) 
   So browsers, make use of LLL like c++ instead of JS Engine and blocking the thread to perform these async operations in the background and these APIs are called Web APIs (which are asynchronous, meaning they do something in background and return the data back to JS Engine)
 
-3. **Event Loop** and **Callback Queue**
+3. #### **Event Loop** and **Callback Queue**
 
 JS runtime in action
 
@@ -437,7 +454,7 @@ JS Runtime > Music Orchestra
 
 ![Inside JS Engine](./assets/img/jre-19.png) 
 
-
+**[⬆ Back to Topics](#table-of-topics)**
 
 
 ---
