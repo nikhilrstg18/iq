@@ -1023,6 +1023,8 @@ Misc. Statements
 ### Execution Context
 ❓ *How do we run code in JS?*
 
+We assign variables and then we run functions, that's all we do in JS
+
 ❓ *which example code will result in compilation error?*
 
 eg. A
@@ -1062,7 +1064,8 @@ sayMyName()
 - Now all execution context poped off from call stack as the function execution completes and finally after execution of last line of our code, global execution context popped off leaving empty call stack
 
 call stack diagram
-  ![call stack diagram](./assets/img/ec-2.png)
+
+<img src="./assets/img/ec-2.png" style="width:400px">
 
 ❓*So can I say whenever JS code executed, it will run within an execution context(can be global or some function), true or false?*
 
@@ -1123,7 +1126,6 @@ sayMyName();
 Think of execution context in call stack as different planet where corresponding code is written
 
 ![Lexical Environment](./assets/img/le-1.png)
-<img src="./assets/img/le-1.png" style="width:500px">
 
 Now if I say that i am doing lexical analysis or compiler is performing lexical analysis, this simply means its checking where the code/words are written and their location(i.e. what planet it belongs to)
 
@@ -1158,17 +1160,194 @@ function sayMyName() {
 sayMyName();
 
 ```
+- When the compiler/interpreter see above code, they will know different things about above code. 
+- In above case, compiler finds that function a() is lexically inside function findName(). 
+- This way compiler get to know the location of function a() and decides and makes decision where to put things , what actions it will take and what other function it has access to within execution context .
 
-Global execution context
+> Now, can we say execution context can tell us which lexical environment(universe) is running 
+
+> In JS our lexical scope (available data + variables where the function was defined) determines our available variables. Not where the function is called (dynamic scope)
+
+❓ *What is the first lexical environment while compiling a JS file?*
+
+Global lexical environment (global execution context)
+
+❓ *What is the lexical environment of function `a()` while compiling a JS file?*
+
+findName()
+
+> By understanding lexical environment, we are good to understand below concepts
+> 1. Scope-chaining
+> 2. Scope
+> 3. Lexical and dynamic scope
+> 4. Leakage of global scope
+> 5. Currying
 
 **[⬆ Back to Topics](#table-of-topics)**
 
 ---
 ### Scope & scope chain 
-#### Understanding Scope-Chain  
+
+#### Understanding Scope-Chain
+eg. 1
+```javascript
+function sayName() {
+  var a = "a";
+  return displayName();
+}
+
+function displayName() {
+  var b = "b";
+  return printName();
+}
+
+function printName() {
+  var c = "c";
+  return "NiCK";
+}
+
+sayName();
+```
+From above example, each world(i.e. context) has a link to its outside world(or a link to its parent) and this outer environment depends on where the function sits lexically
+
+eg 1.1
+
+```javascript
+var x = "x"; // global variable
+function sayName() {
+  console.log(x); // <-- accessible here or any of below function
+  var a = "a";
+  return displayName();
+}
+function displayName() {
+  var b = "b";
+  return printName();
+}
+function printName() {
+  var c = "c";
+  return "NiCK";
+}
+sayName();
+```
+![Lexical Environment](./assets/img/sc-1.png)
+
+So above function works without any error. So let's see how this works with diagram
+
+![Lexical Environment](./assets/img/sc-2.png)
+
+As per the diagram
+- Each function is written in global lexical environment, has its own variable environment and also has a Scope Chain that represents each function has link to its parent(i.e. access to variables and functions in global lexical environment)
+- So when we assign variable x = "x", when I run printName(), console.log(x) -> it first looks in the variable environment of printName() and only sees variable c here and can't find variable x, let me go up the scope chain and see if I can find variable x (i.e. in the global lexical environment). So above function works without error
+
+eg 2
+
+```javascript
+function sayName() {
+  var a = "a";
+  return function displayName() {
+    var b = "b";
+    return function printName() {
+      var c = "c";
+      return "NiCK";
+    };
+  };
+}
+```
+to break it down, it has 3 scopes
+
+![Lexical Environment](./assets/img/sc-11.png)
+
+
 #### Understanding Scope [[scope]] 
+
+Observe the diagram below, which is the same function that we have seen so far
+
+![Lexical Environment](./assets/img/sc-3.png)
+
+- Now, when the function( sayName( ) ) is called and a new scope is created for the function that it entered
+- Innermost environment that has some fields that belongs to variable environment in that scope but also another place that points to outer scope and then that outer scope points to its out scope until it hits the global scope
+- To test out this idea, we have some thing called [[scope]]  for sayName under global object. With above function in memory, type `windows` hit enter, find sayName and expand its [[scopes]]
+
+![Lexical Environment](./assets/img/sc-4.png)
+
 #### Lexical scope Vs Dynamic scope  
-#### Leakage of global variable & 'use strict' 
+
+- In JavaScript our lexical(static) scope (available data+variables where the function was defined) determines our available variables. Not where the function is called(dynamic scope)
+- This is how JS engine works, while parsing the complete code its attaches these Scope chain before execution
+- Scope chain starts where the variable is defined and goes all the way down to the global context to see if the variable exists that’s what scope means. Scope is variable can I access that variable
+
+![Lexical Environment](./assets/img/sc-5.png)
+
+From above execution of sayName, we can say all three functions have different lexical scope
+- In Ex1, All three functions have lexical scope -> Global lexical environment 
+- In Ex2, lexical scope or scope chains are defined as below
+
+as per diagram, we call it function lexical environment
+
+![Lexical Environment](./assets/img/sc-6.png)
+
+So,  
+> function lexical environment of sayName -> global lexical environment
+
+> function lexical environment of displayName -> sayName
+
+> function lexical environment of printName -> displayName
+
+
+eg 2.1
+```javascript
+function sayName() {
+  var a = "a";
+  return function displayName() {
+    var b = "b";
+    return function printName() {
+      var c = "c";
+      console.log(c); // <- from var env of printName
+      console.log(b); // <- from var env of displayName due to scope chain
+      console.log(a); // <- from var env of sayName due to scope chain
+      return "NiCK";
+    };
+  };
+}
+sayName()()();
+```
+
+![Lexical Environment](./assets/img/sc-7.png)
+
+eg 2.2
+```javascript
+function sayName() {
+  var a = "a";
+  return function displayName() {
+    var b = "b";
+    //console.log(c); // <- RefErr: not found in scope chain
+    console.log(b); // <- from var env of displayName
+    console.log(a); // <- from var env of sayName due to scope chain
+    return function printName() {
+      var c = "c";
+      return "NiCK";
+    };
+  };
+}
+sayName()()();
+
+```
+
+![Lexical Environment](./assets/img/sc-8.png)
+
+But when commented
+![Lexical Environment](./assets/img/sc-9.png)
+
+Remember, avoid below Js constructs for performance
+
+![Lexical Environment](./assets/img/sc-10.png)
+
+Here with you can change how scopes and scope chain works internally in javascript
+using with in our code might trick JS engine to deoptimize JS code
+
+
+#### Leakage of global variable & 'use strict'
+
 #### Concept of Currying 
 
 **[⬆ Back to Topics](#table-of-topics)**
