@@ -1055,19 +1055,111 @@ sayMyName()
 
 - Initially our JS engine is going to create a **global execution context**  `[global()]` which says start reading the JS file and push **global execution context**  `[global()]` in call stack.
 
-  ![Inside JS Engine](./assets/img/ec-1.png) 
+  ![Global Execution Context](./assets/img/ec-1.png) 
 
 - JS engine is going to look for function invocation and says here's a task [sayMyName()] for me and creates an execution context for it and push the execution context for [sayMyName()] in the call stack.
 - Similarly, while executing [sayMyName()], it encounters [findName()] and says here's another task for me and creates an execution context for it and push the execution context for [findName()]  in the call stack and continues...
 - Now all execution context poped off from call stack as the function execution completes and finally after execution of last line of our code, global execution context popped off leaving empty call stack
 
 call stack diagram
-  ![Inside JS Engine](./assets/img/ec-2.png){:width="36px"}
+  ![call stack diagram](./assets/img/ec-2.png)
+
+❓*So can I say whenever JS code executed, it will run within an execution context(can be global or some function), true or false?*
+
+Seems to be true, what we have learnt so far. Let's deep dive to understand global execution context
+
+Whenever Global execution context is created, it gives you 2 things
+- **Global object** (**window** in case of browser | **global** in case of nodejs)
+- **this**
+
+❓*Does that mean, if execute an empty JS file, i will still be able to access window and this?*
+Yes, and in global execution context
+
+```javascript
+this === window; // true in case of browser
+this === gobal; // true in case of nodejs
+```
+
+Now let's say you have created a variable, and print global object. You will notice that you have added a same variable to global object. Similarly I can add functions and other things to global object 
+
+![chrome console](./assets/img/ec-3.png)
+
+- So far the creation phase of global execution context is completed, now execution phase executes
+- Simply say, when you run JS code in JS engine, a global execution context is created and when you run a function a new execution context is created until everything is popped off from call stack and all of the code is executed
+
+❓*What is the first execution context created when you run a JS file?*
+
+Global execution context
 
 **[⬆ Back to Topics](#table-of-topics)**
 
 ---
 ### Lexical Environment  
+
+❓ *What does lexical means?*
+
+Lexical means at compile time
+
+❓ *What does Lexical Environment means?*
+
+Lexical environment simply means **where you write something which is importan**t
+
+❓ *Why is it important?*
+
+Let understand with example  
+```javascript
+function printName() {
+    return 'Nikhil';
+}
+function findName() {
+    return printName();
+}
+function sayMyName() {
+    return findName();
+}
+sayMyName();
+```
+
+Think of execution context in call stack as different planet where corresponding code is written
+
+![Lexical Environment](./assets/img/le-1.png)
+<img src="./assets/img/le-1.png" style="width:500px">
+
+Now if I say that i am doing lexical analysis or compiler is performing lexical analysis, this simply means its checking where the code/words are written and their location(i.e. what planet it belongs to)
+
+❓	*What part of universe does `printName()`, `findName()`, `sayMyName()` belongs to* 
+
+All belongs to global planet ( global execution context)
+
+❓ *What will be the output of below codes*
+
+| A             | B                    |
+| ------------- | -------------------- |
+| `sayMyName()` | `window.sayMyName()` |
+| Nikhil        | Nikhil               |
+
+
+This work because all the functions including sayMyName() is part of global execution context.
+
+eg 2
+```javascript
+function printName() {
+    return 'Nikhil';
+}
+function findName() {
+	function a() {
+
+	}
+    return printName();
+}
+function sayMyName() {
+    return findName();
+}
+sayMyName();
+
+```
+
+Global execution context
 
 **[⬆ Back to Topics](#table-of-topics)**
 
