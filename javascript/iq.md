@@ -1506,11 +1506,11 @@ Good luck with your interview 😊
 60. ### What are the events available for server sent events
 
     Below are the list of events available for server sent events
-    | Event | Description |
-    |---- | ---------
-    | onopen | It is used when a connection to the server is opened |
-    | onmessage | This event is used when a message is received |
-    | onerror | It happens when an error occurs|
+    | Event     | Description                                          |
+    | --------- | ---------------------------------------------------- |
+    | onopen    | It is used when a connection to the server is opened |
+    | onmessage | This event is used when a message is received        |
+    | onerror   | It happens when an error occurs                      |
 
     **[⬆ Back to Top](#table-of-contents)**
 
@@ -4084,14 +4084,14 @@ Good luck with your interview 😊
 228. ### What are the different error names from error object
 
      There are 6 different types of error names returned from error object,
-     | Error Name | Description |
-     |---- | ---------
-     | EvalError | An error has occurred in the eval() function |
-     | RangeError | An error has occurred with a number "out of range" |
-     | ReferenceError | An error due to an illegal reference|
-     | SyntaxError | An error due to a syntax error|
-     | TypeError | An error due to a type error |
-     | URIError | An error due to encodeURI() |
+     | Error Name     | Description                                        |
+     | -------------- | -------------------------------------------------- |
+     | EvalError      | An error has occurred in the eval() function       |
+     | RangeError     | An error has occurred with a number "out of range" |
+     | ReferenceError | An error due to an illegal reference               |
+     | SyntaxError    | An error due to a syntax error                     |
+     | TypeError      | An error due to a type error                       |
+     | URIError       | An error due to encodeURI()                        |
 
      **[⬆ Back to Top](#table-of-contents)**
 
@@ -5035,13 +5035,13 @@ Good luck with your interview 😊
 289. ### What is the difference between java and javascript
 
      Both are totally unrelated programming languages and no relation between them. Java is statically typed, compiled, runs on its own VM. Whereas Javascript is dynamically typed, interpreted, and runs in a browser and nodejs environments. Let's see the major differences in a tabular format,
-     | Feature | Java | JavaScript |
-     |---- | ---- | -----
-     | Typed | It's a strongly typed language | It's a dynamic typed language |
-     | Paradigm | Object oriented programming | Prototype based programming |
-     | Scoping | Block scoped | Function-scoped |
-     | Concurrency | Thread based | event based |
-     | Memory | Uses more memory | Uses less memory. Hence it will be used for web pages |
+     | Feature     | Java                           | JavaScript                                            |
+     | ----------- | ------------------------------ | ----------------------------------------------------- |
+     | Typed       | It's a strongly typed language | It's a dynamic typed language                         |
+     | Paradigm    | Object oriented programming    | Prototype based programming                           |
+     | Scoping     | Block scoped                   | Function-scoped                                       |
+     | Concurrency | Thread based                   | event based                                           |
+     | Memory      | Uses more memory               | Uses less memory. Hence it will be used for web pages |
 
      **[⬆ Back to Top](#table-of-contents)**
 
@@ -7374,7 +7374,7 @@ Good luck with your interview 😊
      Let's see the difference with an example,
 
      ```javascript
-     isNaN(‘hello’);   // true
+     isNaN('hello');   // true
      Number.isNaN('hello'); // false
      ```
 
