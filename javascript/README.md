@@ -13,11 +13,16 @@ The questions provided in this repository are the summary of frequently asked qu
 Good luck with your interview 😊
 ---
 # Table of Section
-| #                  | Sections                       |
-| ------------------ | ------------------------------ |
-| 1. Getting Started | 👉 [View](./getting-started.md) |
-| 2. Grammer         | 👉 [View](./basics.md)          |
-| 3. Concepts        | 👉 [View](./fundamentals.md)    |
+| #                                        | Sections                       |
+| ---------------------------------------- | ------------------------------ |
+| 1. Getting Started                       | 👉 [View](./getting-started.md) |
+| 2. JS Grammer                            | 👉 [View](./basics.md)          |
+| 3. JS Fundamentals                       | 👉 [View](./fundamentals.md)    |
+| 4. JS Closure and Prototypal Inheritence | 👉 [View](./2-pillars.md)       |
+| 5. Object Oriented Programming with JS   | 👉 [View](./oop-js.md)          |
+| 6. Functional Programming with JS        | 👉 [View](./fp-js.md)           |
+| 7. Aync JS                               | 👉 [View](./async-js.md)        |
+| 8. Error Handling JS                     | 👉 [View](./error-js.md)        |
 
 
 Good luck with your interview 😊
