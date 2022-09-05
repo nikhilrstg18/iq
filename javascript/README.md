@@ -23,6 +23,7 @@ Good luck with your interview 😊
 | 6. Functional Programming with JS        | 👉 [View](./fp-js.md)           |
 | 7. Aync JS                               | 👉 [View](./async-js.md)        |
 | 8. Error Handling JS                     | 👉 [View](./error-js.md)        |
+| 8. DSA with JS                           | 👉 [View](./dsa.md)             |
 
 
 Good luck with your interview 😊
