@@ -3,6 +3,8 @@
 
 ## Big O
 
+---
+
 **O(n) - time complexity**
 > estimates how an algorithm performs regardless of the kind of machine it runs on. 
 > 
@@ -18,8 +20,7 @@
 
 ### Big O CheetSheet
 <style>.heatMap {
-        text-align: left;
-        
+        text-align: left;        
     }
     .heatMap tr:nth-child(1) td:nth-child(1),
     .heatMap tr:nth-child(1) td:nth-child(2) { background: #E8F5E9; color :black; }
@@ -50,7 +51,7 @@
 
 </div>
 
-❓ *What is a Good code?*
+❓ *What is a good code?*
 > Readable and Scalable
    1. Speed (Operations) - measured by **O(n)** aka **Time Complexity**
    2. Memory (Ram) - measured by **O(s)** aka **Space Complexity**
@@ -72,7 +73,13 @@
    3. Time Complexity
 
 ---
+### Simplifying Big O
 
+- Always consider worst case
+- Remove constants
+- Different term for inputs
+- Drop non-dominents
+- 
 ### Calculating Big O
 
 #### O(1): Contant Time Complexity
@@ -93,27 +100,43 @@ function getWordFrequency(dictionary, word) {
 }
 ```
 
-- Time Complexity of eg 1 and eg 1.1 -> **O(1)** : Constants ( **as 'n' grows time complexity remains constant**)
+> Big O calculation
+
+Analysis of input size at each iteration of Binary Search:
+
+| Number of operation ( No Iteration ) | length of input array |
+| ------------------------------------ | --------------------- |
+| 1                                    | n                     |
+
+Also, for any length of the array , number of operations performed is 1.
+
+=> 1 = k
+
+Applying Big O function, dropping and constants on LHS will give number of operations performed by algorithm with input size of n:
+
+=> O(1) = k 
+
+- Time Complexity of eg 1 and eg 1.1 -> **O(1)** : Constant ( **as 'n' grows time complexity remains constant**)
 - In other words, Run time is independent of the input size of the problem.
 
 
-#### O(log n)
+#### O(log n) : Logarithmic Time Complexity
 
 eg 2
 ```javascript
 function indexOf(array, element, offset = 0) {
   // split array in half
-  const half = parseInt(array.length / 2);          // <-- 1
-  const current = array[half];                      // <--
+  const half = parseInt(array.length / 2);
+  const current = array[half];
 
   if(current === element) {
     return offset + half;
-  } else if(element > current) {                    // <-- 2.1
+  } else if(element > current) {
     const right = array.slice(half);
-    return indexOf(right, element, offset + half);  // <-- 3.1
-  } else {                                          // <-- 2.2
+    return indexOf(right, element, offset + half);
+  } else {
     const left = array.slice(0, half)
-    return indexOf(left, element, offset);          // <-- 3.2
+    return indexOf(left, element, offset);
   }
 }
 
@@ -126,12 +149,39 @@ console.log(indexOf(directory, 'Zoe'));     // => 18
 }
 ```
 
-See calculation 👉 [view](https://www.geeksforgeeks.org/complexity-analysis-of-binary-search/)
+> Big O calculation
+
+Analysis of input size at each iteration of Binary Search:
+
+| Number of operation ( Iteration ) | length of input array |
+| --------------------------------- | --------------------- |
+| 1st                               | n                     |
+| 2nd                               | n / 2                 |
+| 3rd                               | n / 2<sup>2</sup>     |
+| :                                 | :                     |
+| kth                               | n / 2<sup>k</sup>     |
+Also, we know that after After k iterations, the length of the array becomes 1 (base case) Therefore, the Length of the array
+
+=> n / 2<sup>k</sup> = 1
+
+=>  n = 2<sup>k<sup>
+
+Applying log<sub>2</sub> function on both sides: 
+
+=>  log<sub>2</sub> n = log<sub>2</sub> 2<sup>k<sup>
+
+=>  log<sub>2</sub> n = k log<sub>2</sub> 2
+
+=>  log<sub>2</sub> n = k  [ cuz log<sub>a</sub> a = 1]
+
+Applying Big O function, dropping and constants on LHS will give number of operations performed by algorithm with input size of n:
+
+=> O(log n) = k 
 
 - Time Complexity in eg 2 -> **O(log n)** : Linear (**as soon as 'n' grows time complexity grows  too but in logarithmic trends**)
 - In other words, When a big problem is solved by transforming it into a smaller size by some constant fraction.
 
-#### O(n)
+#### O(n) : Linear Time Complexity
 
 eg 3
 ```javascript
@@ -165,13 +215,101 @@ function printUpAndDown(n: number) {
 }
 ```
 
+> Big O calculation
+
+Analysis of input size at each iteration of Binary Search:
+
+| Number of operation ( Iteration ) | length of input array |
+| --------------------------------- | --------------------- |
+| 1st                               | n                     |
+| 2nd                               | n-1                   |
+| 3rd                               | n-2                   |
+| :                                 | :                     |
+| kth                               | n-(k-1)               |
+
+Also, we know that after After k iterations, the length of the array becomes 0 (base case) Therefore, the Length of the array
+
+=> n -k + 1 = 0
+
+=> n + 1 = k
+
+Applying Big O function, dropping and constants on LHS will give number of operations performed by algorithm with input size of n:
+
+=> O(n) = k
+
 - Time Complexity in eg 3 and eg 3.1 -> **O(n)** : Linear (**as soon as 'n' grows time complexity grows too but in linear trends**)
 - In other words, the problem requires a small amount of processing time for each element in the input
 - In eg 3.1 May be thinking O(2n) but we see the big picture! BigONotation doesn't care about precision only about general trends and remove constants
 
-#### O(n<sup>2</sup>) : Quadratic Time Complexity
+
+#### O(n log n) : Linearithmic Time Complexity
 
 eg 4
+```javascript
+/**
+ * Sort array in asc order using merge-sort
+ * @example
+ *    sort([3, 2, 1]) => [1, 2, 3]
+ *    sort([3]) => [3]
+ *    sort([3, 2]) => [2, 3]
+ * @param {array} array
+ */
+function sort(array = []) {
+  const size = array.length;
+  // base case
+  if (size < 2) {
+    return array;
+  }
+  if (size === 2) {
+    return array[0] > array[1] ? [array[1], array[0]] : array;
+  }
+  // slit and merge
+  const mid = parseInt(size / 2, 10);
+  return merge(sort(array.slice(0, mid)), sort(array.slice(mid))); // <-- O(log n)
+}
+
+/**
+ * Merge two arrays in asc order
+ * @example
+ *    merge([2,5,9], [1,6,7]) => [1, 2, 5, 6, 7, 9]
+ * @param {array} array1
+ * @param {array} array2
+ * @returns {array} merged arrays in asc order
+ */
+function merge(array1 = [], array2 = []) {
+  const merged = [];
+  let array1Index = 0;
+  let array2Index = 0;
+  // merge elements on a and b in asc order. Run-time O(a + b)
+  while (array1Index < array1.length || array2Index < array2.length) {  // <-- O(n)
+    if (array1Index >= array1.length || array1[array1Index] > array2[array2Index]) {
+      merged.push(array2[array2Index]);
+      array2Index += 1;
+    } else {
+      merged.push(array1[array1Index]);
+      array1Index += 1;
+    }
+  }
+  return merged;
+}
+```
+> Big O calculation 
+
+As we already know that when a algorithm is breaking the input into half in `sort()` 
+(Worst case) : O(log n)
+As iterating over a list is linear (Worst case): O(n)
+
+So overall operation would be
+
+=> O(log n) + O(n) = k
+=> O(n log n) = k
+
+- Time Complexity in eg 4 -> **O(n log n)** : Linearithmic ( **as soon as n grows time complexity grows too but in linearithmic trends**)
+- In other words, when a problem is broken into smaller subproblems, solving them independently, and combining the solutions 
+
+#### O(n<sup>2</sup>) : Quadratic Time Complexity
+
+eg 5
 ```javascript
 function sort(n) {
   for (let outer = 0; outer < n.length; outer++) {
@@ -193,61 +331,18 @@ function sort(n) {
   return n;
 }
 ```
-- Time Complexity in eg 4 -> **O(n<sup>2</sup>)** : Quadratic ( **as soon as n grows time complexity grows too but in quadratic trends**)
-- 
-#### O(n log n) : Linearithmic Time Complexity
 
-eg 5
-```javascript
-/**
- * Sort array in asc order using merge-sort
- * @example
- *    sort([3, 2, 1]) => [1, 2, 3]
- *    sort([3]) => [3]
- *    sort([3, 2]) => [2, 3]
- * @param {array} array
- */
-function sort(array = []) {
-  const size = array.length;
-  // base case
-  if (size < 2) {
-    return array;
-  }
-  if (size === 2) {
-    return array[0] > array[1] ? [array[1], array[0]] : array;
-  }
-  // slit and merge
-  const mid = parseInt(size / 2, 10);
-  return merge(sort(array.slice(0, mid)), sort(array.slice(mid)));
-}
+> Big O calculation 
 
-/**
- * Merge two arrays in asc order
- * @example
- *    merge([2,5,9], [1,6,7]) => [1, 2, 5, 6, 7, 9]
- * @param {array} array1
- * @param {array} array2
- * @returns {array} merged arrays in asc order
- */
-function merge(array1 = [], array2 = []) {
-  const merged = [];
-  let array1Index = 0;
-  let array2Index = 0;
-  // merge elements on a and b in asc order. Run-time O(a + b)
-  while (array1Index < array1.length || array2Index < array2.length) {
-    if (array1Index >= array1.length || array1[array1Index] > array2[array2Index]) {
-      merged.push(array2[array2Index]);
-      array2Index += 1;
-    } else {
-      merged.push(array1[array1Index]);
-      array1Index += 1;
-    }
-  }
-  return merged;
-}
-```
-- Time Complexity in eg 4 -> **O(n log n)** : Linearithmic ( **as soon as n grows time complexity grows too but in linearithmic trends**)
-- In other words, when a problem is broken into smaller subproblems, solving them independently, and combining the solutions 
+This will have a quadratic time look-up since the function is looking at a every index in the array twice:
+
+=> n<sup>2</sup> = k
+
+Applying Big O function, dropping and constants on LHS will give number of operations performed by algorithm with input size of n:
+
+O(n<sup>2</sup>) = k 
+
+- Time Complexity in eg 5 -> **O(n<sup>2</sup>)** : Quadratic ( **as soon as n grows time complexity grows too but in quadratic trends**)
 
 
 #### O(2<sup>n</sup>) : Exponential Time Complexity
@@ -311,7 +406,10 @@ getPermutations('abcde') // abcde, abced, abdce, abdec, abecd, abedc, acbde...
 
 ### Simplifying Big O
 
-### CheetSheet
+- Always consider worst case
+- Remove constants
+- Different term for inputs
+- Drop non-dominents
 
 ---
 
@@ -325,14 +423,14 @@ How to Tackle Coding Interview with 15 steps
 2. **Double check**: 
    1. What are the inputs? 
    2. What are the outputs?
-3. **What is most important value of the problem?** 
-   1. What you want to focus on time or  space. 
-   2. What is the mail goal?
+3. What is most important **value of the problem**? 
+   1. What you want to focus on **time** or **space**. 
+   2. What is the main goal?
 4. Don't be annoying asking too many questions.
 5. **Start with naive/brute force approach.**
-   2. First thing that comes into your mind
-   3. It that you are able to thinks well and critically 
-   4. You don't even need to write the code, just speak about it.
+   1. First thing that comes into your mind
+   2. It that you are able to thinks well and critically 
+   3. You don't even need to write the code, just speak about it.
 6. **Tell them why your first approach is not the best** (i.e. O(n2) or higher, readability, etc.)
 7.  **Walk-through your approach, comment things and see where you may be able to break things**
     1.  Any Repeatetion, bottleneck(s) or any unnecessary work done?
@@ -360,7 +458,7 @@ How to Tackle Coding Interview with 15 steps
 15. If you interviewer is happy with your code, interview usually ends here. It's common that interviewer usually asks extension questions, like 
     a. How will you handle the problem if the whole input is too large to fit into memory? Start talking about the Space Complexity
 
-❓ *Do I Need to go through this kind of analysis to solve problem in everyday life ?*
+❓ *Do I need to go through this kind of analysis to solve problem in everyday life ?*
 
 - **No**, above points demonstrate the thought process the good developers have, and what companies are looking for.
 
